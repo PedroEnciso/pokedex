@@ -1,0 +1,29 @@
+.content-container {
+  max-height: 700px;
+  max-width: 700px;
+}
+
+.top-screen {
+  background: #E3FFFF;
+}
+
+.list {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.list .list__item {
+  height: 40px;
+}
+
+.list .list__item .list__content__container {
+  cursor: pointer;
+  background: #80D9FF;
+  -webkit-transition: background .3s;
+  transition: background .3s;
+}
+
+.list .list__item .list__content__container:hover {
+  background: #43C7FF;
+}
+/*# sourceMappingURL=style.css.map */

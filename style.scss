@@ -1,0 +1,30 @@
+
+.content-container {
+    max-height: 700px;
+    max-width: 700px;
+}
+
+.top-screen {
+    background: #E3FFFF;
+}
+
+.list {
+    width: 90%;
+    margin: 0 auto;
+
+    .list__item {
+        height: 40px;
+
+        .list__content__container {
+            cursor: pointer;
+            background: #80D9FF;
+            transition: background .3s;
+        }
+
+        .list__content__container:hover {
+            background: #43C7FF;
+
+        }
+    }
+}
+
