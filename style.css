@@ -38,6 +38,10 @@
   transition: background .3s;
 }
 
+.content-container .top-screen .list .list__item .list__content__container .poke-name-number {
+  margin-left: -120px;
+}
+
 .content-container .top-screen .list .list__item .list__content__container:hover {
   background: #43C7FF;
 }

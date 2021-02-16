@@ -31,6 +31,10 @@
                     cursor: pointer;
                     background: #80D9FF;
                     transition: background .3s;
+
+                    .poke-name-number {
+                        margin-left: -120px;
+                    }
                 }
         
                 .list__content__container:hover {
