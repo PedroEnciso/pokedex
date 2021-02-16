@@ -2,24 +2,26 @@
 let url = "https://pokeapi.co/api/v2/pokemon/";
 let desc = document.getElementById('description');
 
-let pokemonNumber = 10;
+let listNumber = 0;
 
 let sprite;
 let pokeNumber;
 let pokeName;
 
-for (let i = 1; i <= pokemonNumber; i++)
-fetch(url + i)
+for (let i = 1; i <= 10; i++)
+
+pokemonNumber = i + listNumber;
+fetch(url + pokemonNumber)
     .then(function(resp) {
         return resp.json();
     })
     .then(function(data) {
-        sprite = document.getElementById('sprite' + i)
-        pokeNumber = document.getElementById('pokeNumber' + i)
-        pokeName = document.getElementById('pokeName' + i)
+        sprite = document.getElementById('sprite' + pokemonNumber)
+        pokeNumber = document.getElementById('pokeNumber' + pokemonNumber)
+        pokeName = document.getElementById('pokeName' + pokemonNumber)
 
 
-        pokeNumber.innerHTML = '# ' + i;
+        pokeNumber.innerHTML = '# ' + pokemonNumber;
         sprite.src = data.sprites.front_default;
         pokeName.innerHTML = data.name;
         /*
