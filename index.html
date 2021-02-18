@@ -5,149 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="tailwind.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <main class="w-100 vh-100 bg-danger d-flex align-items-center justify-content-center">
-        <div class="w-100 vh-100 bg-danger py-4 d-flex flex-wrap align-content-between content-container">
-            <div class="col-11 rounded-3 mx-auto top-screen" style="height: 60%">
+<body class="min-h-screen bg-gray-300">
+    <main>
+        <div class="mt-16 w-11/12 w-sm-8/12 mx-auto">
+            <h1 class="text-3xl text-center">Pokedex</h1>
 
-                <div class="col-10 mx-auto d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center nav" onclick="getPrevList()"><p class="m-0">Prev</p></div>
-                    <h1>Pokedex</h1>
-                    <div class="d-flex align-items-center nav" onclick="getNextList()"><p class="m-0">Next</p></div>
-                </div>
+            <form autocomplete="off" class="w-100 d-flex mt-6">
+                <input type="text" placeholder="Search for a pokemon!" class="w-10/12 py-2 pl-2 rounded-l-lg">
+                <button class="w-2/12 bg-blue-600 text-white rounded-r-lg">Search</button>
+            </form>
+        </div>
 
-                <!--Top Screen-->
-                <div class="row row-cols-2 pt-2x list gy-4 gx-3">
+        <div class="mt-16 w-11/12 w-sm-8/12 mx-auto p-4 gap-3 bg-red-300 rounded-lg grid grid-cols-1 grid-cols-sm-2">
+            <div class="d-flex justify-content-center max-w-full">
+                <img src="" alt="" id="pokeImage">
 
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite1" width="80px" height="80px" class="">
-                                <div class="poke-name-number">
-                                    <p id="pokeNumber1" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName1" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite2" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber2" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName2" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite3" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber3" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName3" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite4" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber4" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName4" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite5" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber5" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName5" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite6" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber6" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName6" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite7" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber7" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName7" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite8" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber8" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName8" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite9" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber9" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName9" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rounded-pill list__item">
-                        <div class=" rounded-pill  w-100 mx-auto h-100 list__content__container">
-                            <div class="mx-auto col-12 col-md-6 d-flex align-items-center justify-content-between h-100">
-                                <img src="" alt="" id="sprite10" width="80px" height="80px" class="">
-                                <div>
-                                    <p id="pokeNumber10" class="mb-0 lh-1">#1</p>
-                                    <p id="pokeName10" class="mb-0 text-center lh-1">Bulbasaur</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+            </div>
+            <div class="d-flex flex-col justify-center">
+                <p id="pokeDescription"></p>
+                <div class="d-flex mt-2 justify-center">
+                    <p id="pokeType1"></p>
+                    <p id="pokeType2"></p>
                 </div>
 
             </div>
 
-            <div class="bg-dark col-11 rounded-3 mx-auto" style="height: 35%"></div>
 
         </div>
+
     </main>
     <script src="main.js"></script>
 </body>

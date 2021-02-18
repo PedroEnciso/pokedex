@@ -1,66 +1,31 @@
-
-let url = "https://pokeapi.co/api/v2/pokemon/";
-let desc = document.getElementById('description');
-
-let listNumber = 860;
-
-let sprite;
-let pokeNumber;
-let pokeName;
-let pokemonNumber;
-
-for (let i = 1; i <= 10; i++) {
-    pokemonNumber = i + listNumber;
-    console.log(pokemonNumber + " and i = " + i);
-    getPokemon(pokemonNumber, i);
-}
-
-
-function getPokemon(pokemonNumber, i) {
-    fetch(url + pokemonNumber)
-    .then(function(resp) {
-        return resp.json();
-    })
-    .then(function(data) {
-        sprite = document.getElementById('sprite' + i)
-        pokeNumber = document.getElementById('pokeNumber' + i)
-        pokeName = document.getElementById('pokeName' + i)
-
-
-        pokeNumber.innerHTML = '# ' + pokemonNumber;
-        sprite.src = data.sprites.front_default;
-        pokeName.innerHTML = data.name;
-        /*
-        fetch("https://pokeapi.co/api/v2/pokemon-species/" + i)
-            .then(function(resp) {
-                return resp.json();
-            })
-            .then(function(data2) {
-                description.innerHTML = data2.flavor_text_entries[0].flavor_text
-            })*/
-    })
-}
-
-function getNextList() {
-    if (listNumber == 890) {return}
-    listNumber += 10;
-    for (let i = 1; i <= 10; i++) {
-        pokemonNumber = i + listNumber;
-        if (pokemonNumber > 898) {
-            getPokemon(1, i)
+//get array of every pokemon name
+fetch("https://pokeapi.co/api/v2/pokemon/?limit=898")
+    .then( resp => resp.json())
+    .then( data => {
+        let pokemonNames = data.results;
+        let pokemonNameArray = new Array();
+        for (i=0; i < pokemonNames.length; i++) {
+            pokemonNameArray[i] = pokemonNames[i].name
         }
-        console.log(pokemonNumber + " and i = " + i);
-        getPokemon(pokemonNumber, i);
-    }
-}
+    })
+
+let pokeImage = document.getElementById('pokeImage')
+let pokeType1 = document.getElementById('pokeType1')
+let pokeType2 = document.getElementById('pokeType2')
 
 
-function getPrevList() {
-    if (listNumber == 0) { return }
-    listNumber -= 10;
-    for (let i = 1; i <= 10; i++) {
-        pokemonNumber = i + listNumber;
-        console.log(pokemonNumber + " and i = " + i);
-        getPokemon(pokemonNumber, i);
-    }
-}
+fetch("https://pokeapi.co/api/v2/pokemon/steelix/")
+    .then( resp => resp.json())
+    .then( data => {
+        pokeImage.src = data.sprites.other.dream_world.front_default
+        console.log(data.types[0])
+        pokeType1.innerHTML = data.types[0].type.name
+    })
+
+let pokeDescription = document.getElementById('pokeDescription')
+ 
+fetch("https://pokeapi.co/api/v2/pokemon-species/blaziken/")
+    .then( resp => resp.json())
+    .then( data => {
+        pokeDescription.innerHTML = data.flavor_text_entries[0].flavor_text
+    })

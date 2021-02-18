@@ -46,3 +46,10 @@
   background: #43C7FF;
 }
 /*# sourceMappingURL=style.css.map */
+
+
+/*MY CSS*/
+
+#pokeDescription {
+  height: fit-content;
+}
