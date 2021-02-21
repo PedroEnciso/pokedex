@@ -1,22 +1,21 @@
 //get array of every pokemon name
-/*
+let pokemonNameArray = new Array();
 fetch("https://pokeapi.co/api/v2/pokemon/?limit=898")
     .then( resp => resp.json())
     .then( data => {
         let pokemonNames = data.results;
-        let pokemonNameArray = new Array();
         for (i=0; i < pokemonNames.length; i++) {
             pokemonNameArray[i] = pokemonNames[i].name
         }
     })
-    */
+
 let pokeImage = document.getElementById('pokeImage')
 let pokeType1 = document.getElementById('pokeType1')
 let pokeType2 = document.getElementById('pokeType2')
 let type1;
 
-
-fetch("https://pokeapi.co/api/v2/pokemon/87/")
+const getPokemon = (userInput) => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${userInput}`)
     .then( resp => resp.json())
     .then( data => {
         document.getElementById('pokeName').innerHTML = data.name
@@ -30,11 +29,42 @@ fetch("https://pokeapi.co/api/v2/pokemon/87/")
             document.getElementById('type2-container').classList.add(data.types[1].type.name)
         }
     })
+}
+
 
 let pokeDescription = document.getElementById('pokeDescription')
  
-fetch("https://pokeapi.co/api/v2/pokemon-species/87/")
+const getPokemonDescription = (userInput) => {
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${userInput}`)
     .then( resp => resp.json())
     .then( data => {
         pokeDescription.innerHTML = data.flavor_text_entries[0].flavor_text
     })
+}
+
+
+let submit = document.getElementById('submit')
+let input = document.getElementById('inputBox')
+
+submit.addEventListener('click', () => {
+    document.getElementById('errorMessage').innerHTML = ""
+    let userInput = input.value
+    if(pokemonNameArray.includes(userInput)) {
+        console.log('yes')
+        getPokemon(userInput)
+        getPokemonDescription(userInput)
+        return
+    }
+    else if (parseInt(userInput)) {
+        let pokeNumber = parseInt(userInput)
+        if (pokeNumber <= 898) {
+            getPokemon(pokeNumber)
+            getPokemonDescription(pokeNumber)
+        }
+        else {
+            document.getElementById('errorMessage').innerHTML = 'Please choose a number between 1 and 898.'
+        }
+        return
+    }
+    document.getElementById('errorMessage').innerHTML = 'Sorry! That Pokemon does not exist.'
+})
