@@ -38,8 +38,23 @@ const getPokemonDescription = (userInput) => {
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${userInput}`)
     .then( resp => resp.json())
     .then( data => {
-        pokeDescription.innerHTML = data.flavor_text_entries[0].flavor_text
+        for (let j = 0; j < data.flavor_text_entries.length; j++) {
+
+            //make sure description is in english
+            if (data.flavor_text_entries[j].language.name == 'en') {
+                pokeDescription.innerHTML = data.flavor_text_entries[j].flavor_text
+            }
+        }
     })
+}
+
+const setToNull = () => {
+    pokeImage.innerHTML = ''
+    pokeType1.innerHTML = ''
+    pokeType2.innerHTML = ''
+    pokeType2.classList.remove()
+    pokeDescription.innerHTML = ''
+    document.getElementById('errorMessage').innerHTML = ""
 }
 
 
@@ -47,14 +62,16 @@ let submit = document.getElementById('submit')
 let input = document.getElementById('inputBox')
 
 submit.addEventListener('click', () => {
-    document.getElementById('errorMessage').innerHTML = ""
     let userInput = input.value
+    setToNull()
+    //handle typed names
     if(pokemonNameArray.includes(userInput)) {
-        console.log('yes')
         getPokemon(userInput)
         getPokemonDescription(userInput)
         return
     }
+
+    //handle typed number
     else if (parseInt(userInput)) {
         let pokeNumber = parseInt(userInput)
         if (pokeNumber <= 898) {
