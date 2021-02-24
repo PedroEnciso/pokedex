@@ -86,12 +86,7 @@ const getPokemonNumber = (data) => {
 }
 
 const getPokemonSprite = (data) => {
-    if (data.id < 650) {
-        pokeImage.src = data.sprites.other.dream_world.front_default
-    }
-    else {
-        pokeImage.src = data.sprites.front_default
-    }
+    pokeImage.src = data.sprites.other['official-artwork'].front_default
 }
 
 const resetClasses = () => {
@@ -107,18 +102,18 @@ const resetClasses = () => {
 
 const loadPokemonData = () => {
     userInput = input.value
-    resetClasses()
     //handle typed names
     if(pokemonNameArray.includes(userInput)) {
+        resetClasses()
         getPokemon(userInput)
         getPokemonDescription(userInput)
         return
     }
-
-    //handle typed number
+    //handle typed numbers
     else if (parseInt(userInput)) {
         let pokeNumber = parseInt(userInput)
         if (pokeNumber <= 898) {
+            resetClasses()
             getPokemon(pokeNumber)
             getPokemonDescription(pokeNumber)
         }
@@ -139,7 +134,7 @@ inputBox.addEventListener("keydown", (e) => {
     }
 })
 
-// I copied this from google. It keepsthe form from submitting when users search with enter
+// I copied this from google. It keeps the form from submitting when users search with enter
 form.addEventListener("submit", (event) => {
     event.preventDefault();
   })
