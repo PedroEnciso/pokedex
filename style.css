@@ -135,78 +135,78 @@
 
 /*Background colors basedon type*/
 
-.bg-unkown {
+.bkg-unkown {
   background: #9DC1B7;
 }
 
-.bg-bug {
+.bkg-bug {
   background: #C6D16E;
 }
 
-.bg-dark {
+.bkg-dark {
   background: #A29288;
 }
 
-.bg-dragon{
+.bkg-dragon{
   background: #A27DFA;
 }
 
-.bg-electric{
+.bkg-electric{
   background: #FAE078;
 }
 
-.bg-fairy{
+.bkg-fairy{
   background: #F4BDC9;
 }
 
-.bg-fighting{
+.bkg-fighting{
   background: #D67873;
 }
 
-.bg-fire{
+.bkg-fire{
   background: #F5AC78;
 }
 
-.bg-flying{
+.bkg-flying{
   background: #C6B7F5;
 }
 
-.bg-ghost{
+.bkg-ghost{
   background: #A292BC;
 }
 
-.bg-grass{
+.bkg-grass{
   background: #A7DB8D;
 }
 
-.bg-ground{
+.bkg-ground{
   background: #EBD69D;
 }
 
-.bg-ice{
+.bkg-ice{
   background: #BCE6E6;
 }
 
-.bg-normal{
+.bkg-normal{
   background: #C6C6A7;
 }
 
-.bg-poison{
+.bkg-poison{
   background: #C183C1;
 }
 
-.bg-psychic{
+.bkg-psychic{
   background: #FA92B2;
 }
 
-.bg-rock{
+.bkg-rock{
   background: #D1C17D;
 }
 
-.bg-steel{
+.bkg-steel{
   background: #D1D1E0;
 }
 
-.bg-water{
+.bkg-water{
   background: #9DB7F5;
 }

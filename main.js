@@ -1,5 +1,33 @@
-//get array of every pokemon name
-let pokemonNameArray = new Array();
+// DOM Objects
+const pokeName = document.getElementById('pokeName')
+const pokeNumber = document.getElementById('pokeNumber')
+const pokeImage = document.getElementById('pokeImage')
+const pokeType1 = document.getElementById('pokeType1')
+const pokeType2 = document.getElementById('pokeType2')
+const type1Container = document.getElementById('type1-container')
+const type2Container = document.getElementById('type2-container')
+const backgroundColor = document.getElementById('background')
+const pokeDescription = document.getElementById('pokeDescription')
+const errorMessage = document.getElementById('errorMessage')
+const submit = document.getElementById('submit')
+const input = document.getElementById('inputBox')
+const form = document.getElementById('form')
+
+// constants and variables
+let type1, type2
+let userInput
+let pokemonNameArray = new Array()
+
+const TYPES = [
+    'unkown', 'bug', 'dark', 'dragon',
+    'electric', 'fairy', 'fighting',
+    'fire', 'flying', 'ghost', 'grass', 'ground',
+    'ice', 'normal', 'poison', 'psychic',
+    'rock', 'steel', 'water'
+]
+
+
+//get array of every pokemon name when the page loads
 fetch("https://pokeapi.co/api/v2/pokemon/?limit=898")
     .then( resp => resp.json())
     .then( data => {
@@ -9,31 +37,26 @@ fetch("https://pokeapi.co/api/v2/pokemon/?limit=898")
         }
     })
 
-let pokeImage = document.getElementById('pokeImage')
-let pokeType1 = document.getElementById('pokeType1')
-let pokeType2 = document.getElementById('pokeType2')
-let type1;
-
+// functions
 const getPokemon = (userInput) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${userInput}`)
     .then( resp => resp.json())
     .then( data => {
-        document.getElementById('pokeName').innerHTML = data.name
-        pokeImage.src = data.sprites.other.dream_world.front_default
+        pokeName.innerHTML = data.name
+        pokeNumber.innerHTML = getPokemonNumber(data)
+        getPokemonSprite(data)
         type1 = data.types[0].type.name
         pokeType1.innerHTML = type1
-        document.getElementById('type1-container').classList.add(type1)
-        document.getElementById('background').classList.add(`bg-${type1}`)
+        type1Container.classList.add(type1)
+        backgroundColor.classList.add(`bkg-${type1}`)
         if (data.types.length > 1) {
-            pokeType2.innerHTML = data.types[1].type.name
-            document.getElementById('type2-container').classList.add(data.types[1].type.name)
+            type2 = data.types[1].type.name
+            pokeType2.innerHTML = type2
+            type2Container.classList.add(`${type2}`)
         }
     })
 }
 
-
-let pokeDescription = document.getElementById('pokeDescription')
- 
 const getPokemonDescription = (userInput) => {
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${userInput}`)
     .then( resp => resp.json())
@@ -48,22 +71,43 @@ const getPokemonDescription = (userInput) => {
     })
 }
 
-const setToNull = () => {
-    pokeImage.innerHTML = ''
-    pokeType1.innerHTML = ''
-    pokeType2.innerHTML = ''
-    pokeType2.classList.remove()
-    pokeDescription.innerHTML = ''
-    document.getElementById('errorMessage').innerHTML = ""
+const getPokemonNumber = (data) => {
+    switch(data.id.toString().length) {
+        case 1: 
+            return '#00' + data.id
+            break;
+        case 2: 
+            return '#0' + data.id
+            break;
+        case 3: 
+            return '#' + data.id
+            break;
+    }
 }
 
+const getPokemonSprite = (data) => {
+    if (data.id < 650) {
+        pokeImage.src = data.sprites.other.dream_world.front_default
+    }
+    else {
+        pokeImage.src = data.sprites.front_default
+    }
+}
 
-let submit = document.getElementById('submit')
-let input = document.getElementById('inputBox')
+const resetClasses = () => {
+    pokeType2.innerHTML = ''
+    errorMessage.innerHTML = ""
 
-submit.addEventListener('click', () => {
-    let userInput = input.value
-    setToNull()
+    for(const type of TYPES) {
+        type2Container.classList.remove(type)
+        type1Container.classList.remove(type)
+        backgroundColor.classList.remove(`bkg-${type}`)
+    }
+}
+
+const loadPokemonData = () => {
+    userInput = input.value
+    resetClasses()
     //handle typed names
     if(pokemonNameArray.includes(userInput)) {
         getPokemon(userInput)
@@ -84,4 +128,18 @@ submit.addEventListener('click', () => {
         return
     }
     document.getElementById('errorMessage').innerHTML = 'Sorry! That Pokemon does not exist.'
+}
+
+//event listeners
+submit.addEventListener('click', loadPokemonData)
+
+inputBox.addEventListener("keydown", (e) => {
+    if(e.keyCode === 13) {
+        loadPokemonData()
+    }
 })
+
+// I copied this from google. It keepsthe form from submitting when users search with enter
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+  })

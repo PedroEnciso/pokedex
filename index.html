@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="tailwind.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-100 bg-gray-300 pb-4">
+<body class="min-h-100vercel bg-gray-300 pb-4">
     <main>
         <div class="mt-16 w-11/12 sm:w-8/12 lg:w-6/12 mx-auto">
             <h1 class="text-3xl text-center">Pokedex</h1>
 
-            <form autocomplete="off" class="w-100 d-flex mt-6">
-                <input id="inputBox" type="text" placeholder="Search for a pokemon!" class="w-10/12 py-2 pl-2 rounded-l-lg">
+            <form id="form" autocomplete="off" class="w-100 d-flex mt-6">
+                <input id="inputBox" type="text" placeholder="Search for a pokemon by name or type in a number!" class="w-10/12 py-2 pl-2 rounded-l-lg">
                 <button id="submit" class="w-2/12 bg-blue-600 text-white rounded-r-lg" type="button">Search</button>
             </form>
             <p id="errorMessage" class="text-danger mt-2 ml-2" ></p>
@@ -22,6 +22,7 @@
 
         <div id="background" class="mt-16 w-11/12 sm:w-8/12 lg:w-6/12 mx-auto p-4 rounded-lg">
             <h2 id="pokeName" class="text-center text-2xl capitalize"></h2>
+            <p id="pokeNumber" class="text-center text-md"></p>
             <div class="mt-4 md:mt-0 grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div class="d-flex justify-content-center max-w-full">
                     <img src="" alt="" id="pokeImage">
