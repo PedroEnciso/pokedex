@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="tailwind.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-100vercel bg-gray-300 pb-4">
+    <main>
+        <div class="mt-16 w-11/12 sm:w-8/12 lg:w-6/12 mx-auto">
+            <h1 class="text-3xl text-center">Guess That Pokemon</h1>
+            <p class="text-center mt-4 md:w-2/3 mx-auto ">We'll give you a random Pokemon's description and types, and you have to guess which Pokemon they describe.</p>
+            <div class="w-min mx-auto mt-4 flex">
+                <button class="bg-blue-600 text-white rounded-lg py-2 px-3 transition duration:400 hover:bg-blue-800">Play!</button>
+            </div>
+        </div>
+
+        <div id="background" class="mt-16 w-11/12 sm:w-8/12 lg:w-6/12 mx-auto p-4 rounded-lg bg-indigo-50">
+            <p class="text-center text-2xl ">Which Pokemon is this?</p>
+
+            <div class="grid grid-cols-1 w-11/12 md:w-2/3 mx-auto gap-3 mt-4">
+                <div>
+                    <p id="description" class="text-center">This is a desription of a certain Pokemon. I'm not sure if it will be any longer than this.</p>
+                </div>
+                <div class="d-flex items-center justify-center">
+                    <div id="type1-container" class="mr-2 rounded-lg bg-red-200 h-auto">
+                        <p id="pokeType1" class="py-1 px-3">Type 1</p>
+                    </div>
+                    <div id="type2-container" class="ml-2 rounded-lg bg-red-200">
+                        <p id="pokeType2" class="py-1 px-3">Type 2</p>
+                    </div>    
+                </div>
+            </div>
+
+            <div class="w-1/2 mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="w-3/4 mx-auto bg-purple-300 rounded-lg cursor-pointer transition duration:400 hover:bg-purple-400">
+                    <p class="text-center text-lg py-2">pikachu</p>
+                </div>
+
+                <div class="w-3/4 mx-auto bg-purple-300 rounded-lg cursor-pointer transition duration:400 hover:bg-purple-400">
+                    <p class="text-center text-lg py-2">vulpix</p>
+                </div>
+
+                <div class="w-3/4 mx-auto bg-purple-300 rounded-lg cursor-pointer transition duration:400 hover:bg-purple-400">
+                    <p class="text-center text-lg py-2">charmander</p>
+                </div>
+
+                <div class="w-3/4 mx-auto bg-purple-300 rounded-lg cursor-pointer transition duration:400 hover:bg-purple-400">
+                    <p class="text-center text-lg py-2">bulbasaur</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+    <script src="guess.js"></script>
+</body>
+</html>
