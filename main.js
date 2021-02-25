@@ -66,6 +66,7 @@ const getPokemonDescription = (userInput) => {
             //make sure description is in english
             if (data.flavor_text_entries[j].language.name == 'en') {
                 pokeDescription.innerHTML = data.flavor_text_entries[j].flavor_text
+                return
             }
         }
     })
