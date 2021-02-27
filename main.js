@@ -52,7 +52,7 @@ const getPokemon = (userInput) => {
         if (data.types.length > 1) {
             type2 = data.types[1].type.name
             pokeType2.innerHTML = type2
-            type2Container.classList.add(`${type2}`)
+            type2Container.classList.add(type2)
         }
     })
 }

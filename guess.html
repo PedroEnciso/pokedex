@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
+    <title>Guess That Pokemon</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="tailwind.css">
     <link rel="stylesheet" href="style.css">
@@ -11,11 +11,18 @@
 </head>
 <body class="min-h-100vercel bg-gray-300 pb-4">
     <main>
-        <div class="mt-16 w-11/12 sm:w-8/12 lg:w-6/12 mx-auto">
+        <nav class="mt-8 d-flex justify-center">
+            <a href="index.html" class="mr-3"><p>Pokedex</p></a>
+            <p class="font-semibold">|</p>
+            <p class="mx-3 text-blue-700">Guess That Pokemon</p>
+            <p class="font-semibold">|</p>
+            <a href="https://github.com/PedroEnciso/pokedex" class="ml-3"><p>Github</p></a>
+        </nav>
+        <div class="mt-5 w-11/12 sm:w-8/12 lg:w-6/12 mx-auto">
             <h1 class="text-3xl text-center">Guess That Pokemon</h1>
             <p class="text-center mt-4 md:w-2/3 mx-auto ">We'll give you a random Pokemon's description and types, and you have to guess which Pokemon they describe.</p>
             <div class="w-min mx-auto mt-4 flex">
-                <button id="play" class="bg-blue-600 text-white rounded-lg py-2 px-3 transition duration:400 hover:bg-blue-800">Play!</button>
+                <button id="play" class="bg-blue-600 text-white rounded-lg py-2 px-3 transition duration:400 hover:bg-blue-800">Play</button>
             </div>
         </div>
 
@@ -37,21 +44,36 @@
             </div>
 
             <div class="w-1/2 mx-auto mt-5 grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div class="w-3/4 mx-auto bg-purple-300 rounded-lg cursor-pointer transition duration:400 hover:bg-purple-400">
+                <div id="button1" onclick="handleAnswer(this.id)" class="w-3/4 mx-auto bg-blue-300 rounded-lg cursor-pointer transition duration:400 hover:bg-blue-400">
                     <p id="choice1" class="text-center text-lg py-2"></p>
                 </div>
 
-                <div class="w-3/4 mx-auto bg-purple-300 rounded-lg cursor-pointer transition duration:400 hover:bg-purple-400">
+                <div id="button2" onclick="handleAnswer(this.id)" class="w-3/4 mx-auto bg-blue-300 rounded-lg cursor-pointer transition duration:400 hover:bg-blue-400">
                     <p id="choice2" class="text-center text-lg py-2"></p>
                 </div>
 
-                <div class="w-3/4 mx-auto bg-purple-300 rounded-lg cursor-pointer transition duration:400 hover:bg-purple-400">
+                <div id="button3" onclick="handleAnswer(this.id)" class="w-3/4 mx-auto bg-blue-300 rounded-lg cursor-pointer transition duration:400 hover:bg-blue-400">
                     <p id="choice3" class="text-center text-lg py-2"></p>
                 </div>
 
-                <div class="w-3/4 mx-auto bg-purple-300 rounded-lg cursor-pointer transition duration:400 hover:bg-purple-400">
+                <div id="button4" onclick="handleAnswer(this.id)" class="w-3/4 mx-auto bg-blue-300 rounded-lg cursor-pointer transition duration:400 hover:bg-blue-400">
                     <p id="choice4" class="text-center text-lg py-2"></p>
                 </div>
+            </div>
+
+            <div class="w-11/12 sm:w-8/12 mx-auto mt-2">
+                <div class="w-1/2 mx-auto">
+                    <img src="" alt="" id="pokeImage">
+                </div>
+                <p id="result" class="text-center text-xl mt-1"></p>
+                <div class="w-100 d-flex justify-between mt-2">
+                    <p id="points" class="text-lg "></p>
+                    <div id="playAgain" class="bg-blue-600 text-white rounded-lg py-1 px-2 cursor-pointer transition duration:400 hover:bg-blue-800">
+                        <p>Play again</p>
+                    </div>
+                </div>
+                
+
             </div>
 
         </div>

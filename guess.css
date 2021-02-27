@@ -1,3 +1,4 @@
-#background {
+#background,
+#playAgain {
     visibility: hidden;
 }
