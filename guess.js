@@ -18,7 +18,8 @@ const result = document.getElementById('result')
 const points = document.getElementById('points')
 const pokeImage = document.getElementById('pokeImage')
 const playAgain = document.getElementById('playAgain')
-
+const correctCount = document.getElementById('correctCount')
+const incorrectCount = document.getElementById('incorrectCount')
 
 // variables and constants
 const TYPES = [
@@ -31,7 +32,8 @@ const TYPES = [
 let choiceArray = new Array(4)
 let correctAnswer
 let pressedButtons = 0
-let totalPoints = 0
+let correct = 0
+let wrong = 0
 
 
 //functions
@@ -81,7 +83,8 @@ const handleAnswer = (id) => {
     
     if (answer.innerHTML === correctAnswer) { success() }
     else { failure() }
-    points.innerHTML = `Total points: ${totalPoints}`
+    correctCount.innerHTML = `Correct Answers: ${correct}`
+    incorrectCount.innerHTML = `Wrong Answers: ${wrong}`
     playAgain.style.visibility = 'visible'
 }
 
@@ -127,13 +130,13 @@ const setPokemonImage = () => {
 }
 
 const success = () => {
-    totalPoints++
+    correct++
     result.classList.add("bg-green-300")
     result.innerHTML = `Correct! It's ${correctAnswer}.`
 }
 
 const failure = () => {
-    totalPoints--
+    wrong++
     result.classList.add("bg-red-300")
     result.innerHTML = `Sorry, the correct answer is ${correctAnswer}.`
 
