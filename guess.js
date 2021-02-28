@@ -223,10 +223,10 @@ const randomizeArray = (array) => {
 
 const editString = (string, name) => {
     // edit a description with a misspelled name
-    if (string === 'MAWILE') {
-        string = 'MAWHILE'
+    if (string.includes('MAWHILE')) {
+        name = 'MAWHILE'
     }
-    string = string.replace(name, 'THIS POKEMON')
+    string = string.replaceAll(name, 'THIS POKEMON')
     return string
 }
 
