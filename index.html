@@ -20,9 +20,13 @@
         <div class="mt-5 w-11/12 sm:w-8/12 lg:w-6/12 mx-auto">
             <h1 class="text-3xl text-center">Pokedex</h1>
 
-            <form id="form" autocomplete="off" class="w-100 d-flex mt-6">
-                <input id="inputBox" type="text" placeholder="Enter a Pokemon name or ID number!" class="w-10/12 py-2 pl-2 rounded-l-lg">
-                <button id="submit" class="w-2/12 bg-blue-600 text-white rounded-r-lg transition duration:400 hover:bg-blue-800" type="button">Search</button>
+            <form id="form" autocomplete="off" class="w-100  mt-6">
+                <div class="d-flex">
+                    <input id="inputBox" type="text" placeholder="Enter a Pokemon name or ID number!" class="w-10/12 py-2 pl-2 rounded-l-sm">
+                    <button id="submit" class="w-2/12 bg-blue-600 text-white rounded-r-sm transition duration:400 hover:bg-blue-800" type="button">Search</button>
+                </div>
+                <div id="suggestions" class="w-100 rounded-b-lg">
+                </div>
             </form>
             <p id="errorMessage" class="text-danger mt-2 ml-2" ></p>
         </div>
@@ -47,8 +51,17 @@
                     </div>
                 </div>
             </div>
+            <div class="w-100 mt-4 d-flex justify-between">
+                <div id="prev" class="rounded-md bg-black bg-opacity-0 hover:bg-opacity-25 cursor-pointer transition duration-400 d-flex">
+                    <p class="arrow pl-1">&#10094</p>
+                    <p class="py-1 px-2"></p>
+                </div>
+                <div id="next" class="rounded-md bg-black bg-opacity-0 hover:bg-opacity-25 cursor-pointer transition duration-400 d-flex">
+                    <p class="py-1 px-2"></p>
+                    <p class="arrow pr-1">&#10095</p>
+                </div>
+            </div>
         </div>
-
     </main>
     <script src="main.js"></script>
 </body>

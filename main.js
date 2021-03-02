@@ -12,11 +12,15 @@ const errorMessage = document.getElementById('errorMessage')
 const submit = document.getElementById('submit')
 const input = document.getElementById('inputBox')
 const form = document.getElementById('form')
+const suggestionPanel = document.getElementById('suggestions')
+const prev = document.getElementById('prev')
+const next = document.getElementById('next')
 
 // constants and variables
 let type1, type2
 let userInput
 let pokemonNameArray = new Array()
+const AUTOCOMPLETE_OPTIONS = 4
 
 const TYPES = [
     'unkown', 'bug', 'dark', 'dragon',
@@ -93,12 +97,45 @@ const getPokemonSprite = (data) => {
 const resetClasses = () => {
     pokeType2.innerHTML = ''
     errorMessage.innerHTML = ""
+    input.value = ''
+
 
     for(const type of TYPES) {
         type2Container.classList.remove(type)
         type1Container.classList.remove(type)
         backgroundColor.classList.remove(`bkg-${type}`)
     }
+}
+
+const setButtons = (pokemon) => {
+    let pokeIndex
+    if(pokemonNameArray.includes(pokemon)) {
+        pokeIndex = pokemonNameArray.indexOf(pokemon)
+    }
+    else {
+        pokeIndex = pokemon - 1
+    }
+    let prevIndex = pokeIndex - 1
+    let nextIndex = pokeIndex + 1
+
+    // set up prev button
+    if(prevIndex > -1) {
+        prev.getElementsByTagName('p')[1].innerHTML = pokemonNameArray[prevIndex]
+        prev.style.visibility = 'visible'
+    }
+    else {
+        prev.style.visibility = 'hidden'
+    }
+
+    // set up next button
+    if(nextIndex < 898) {
+        next.getElementsByTagName('p')[0].innerHTML = pokemonNameArray[nextIndex]
+        next.style.visibility = 'visible'
+    }
+    else {
+        next.style.visibility = 'hidden'
+    }
+
 }
 
 const loadPokemonData = () => {
@@ -108,6 +145,7 @@ const loadPokemonData = () => {
         resetClasses()
         getPokemon(userInput)
         getPokemonDescription(userInput)
+        setButtons(userInput)
         return
     }
     //handle typed numbers
@@ -117,6 +155,7 @@ const loadPokemonData = () => {
             resetClasses()
             getPokemon(pokeNumber)
             getPokemonDescription(pokeNumber)
+            setButtons(userInput)
         }
         else {
             document.getElementById('errorMessage').innerHTML = 'Please choose a number between 1 and 898.'
@@ -126,7 +165,7 @@ const loadPokemonData = () => {
     document.getElementById('errorMessage').innerHTML = 'Sorry! That Pokemon does not exist.'
 }
 
-//event listeners
+// event listeners
 submit.addEventListener('click', loadPokemonData)
 
 inputBox.addEventListener("keydown", (e) => {
@@ -140,11 +179,50 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 })
 
+prev.addEventListener('click', () => {
+    input.value = prev.getElementsByTagName('p')[1].innerHTML
+    loadPokemonData()
+})
+
+next.addEventListener('click', () => {
+    input.value = next.getElementsByTagName('p')[0].innerHTML
+    loadPokemonData()
+})
+
 // autocomplete functionality
 input.addEventListener("keyup", () => {
     const search = input.value.toLowerCase();
-    const suggestion = pokemonNameArray.filter((pokemon) => { 
-        return pokemon[0].startsWith(search)
+    suggestionPanel.innerHTML = ''
+    const suggestions = pokemonNameArray.filter((pokemon) => { 
+        return pokemon.startsWith(search)
     })
-    console.log(suggestion)
+
+    if(suggestions.length < AUTOCOMPLETE_OPTIONS) {
+        for(let i = 0; i < suggestions.length; i++) {
+            addSuggestion(suggestions[i])
+        }
+    }
+    else {
+        for(let i = 0; i < AUTOCOMPLETE_OPTIONS; i++) {
+            addSuggestion(suggestions[i])
+        }
+    }
 })
+
+const addSuggestion = (name) => {
+    const div = document.createElement('div')
+    const p = document.createElement('p')
+    p.innerHTML = name;
+    div.appendChild(p)
+    suggestionPanel.appendChild(div)
+    if(input.value === '') {
+        suggestionPanel.innerHTML = ''
+    }
+
+    // search for suggestion
+    div.addEventListener('click', () => {
+        input.value = div.getElementsByTagName('p')[0].innerHTML
+        loadPokemonData()
+        suggestionPanel.innerHTML = ''
+    })
+}

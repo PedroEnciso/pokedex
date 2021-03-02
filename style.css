@@ -50,8 +50,54 @@
 
 /*MY CSS*/
 
+#prev {
+  visibility: hidden;
+}
+
+#prev p{
+  text-transform: capitalize;
+}
+
+#next {
+  visibility: hidden;
+}
+
+#next p{
+  text-transform: capitalize;
+}
+
+.arrow {
+  align-self: center;
+}
+
 #pokeDescription {
   height: fit-content;
+}
+
+#suggestions div {
+  cursor: pointer;
+  width: 83.333333%;
+  background-color: rgba(239, 246, 255);
+  transition: .4s;
+  border-top: 1px solid rgba(156, 163, 175);
+
+}
+
+#suggestions div:hover {
+  background-color: rgba(191, 219, 254);
+}
+
+#suggestions div:first-child {
+  border-top: 2px solid rgba(156, 163, 175);
+}
+
+#suggestions div:last-child {
+  border-radius: 0rem 0rem .125rem .125rem;
+}
+
+#suggestions div p {
+  padding: .5rem 0 .5rem .5rem
+
 }
 
 /*Class for pokemon types*/
