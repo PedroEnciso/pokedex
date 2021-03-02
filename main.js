@@ -102,7 +102,7 @@ const resetClasses = () => {
 }
 
 const loadPokemonData = () => {
-    userInput = input.value
+    userInput = input.value.toLowerCase()
     //handle typed names
     if(pokemonNameArray.includes(userInput)) {
         resetClasses()
@@ -138,4 +138,13 @@ inputBox.addEventListener("keydown", (e) => {
 // I copied this from google. It keeps the form from submitting when users search with enter
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-  })
+})
+
+// autocomplete functionality
+input.addEventListener("keyup", () => {
+    const search = input.value.toLowerCase();
+    const suggestion = pokemonNameArray.filter((pokemon) => { 
+        return pokemon[0].startsWith(search)
+    })
+    console.log(suggestion)
+})
