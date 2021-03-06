@@ -1,1 +1,7 @@
-# pokedex
+This site contians two apps that I created using vanilla Javascript. The first is a Pokedex, where the user can search for a Pokemon's name or id number to view that Pokemon's sprite, description and types. After using the app, I realized that I don't know how to spell most Pokemon's names. To fix this, I added an autocomplete function to the input area to decrease the amount of error messages the user sees. I also added two buttons that allow the user to iterate through pokemon based on id number. They can view the next pokemon, or the previous pokemon.
+
+The second app on this site is a game called Guess That Pokemon. When the user preses "Play," the game displays a description of a random Pokemon, its types and 4 answer choices containing the correct answer and 3 other random Pokemon names. When the user picks an answer choice, they will see the sprite of the correct Pokemon, then a message that tells them if their answer was right or wrong.
+
+I created this app as a way for me to become comfortable making API reqeusts and handling them. The biggest challange I had was figuring out how to synchronize the game functions after using fetch(). When I would use fetch to get the data of the correct pokemon, I would get errors when trying to link this informaton to the DOM. I tried using async and await in my fetch call, but I don't think I used them corretly because I had to use a timeout function to stop getting errors in my code. The problem with the timeout function is that it makes the game take forever(a couple seconds) to fully load. This will be the first thing I fix next time I am able to work on this app.
+
+Thank you for reading! I hope you enjoy using my Pokedex and playing Guess That Pokemon.
